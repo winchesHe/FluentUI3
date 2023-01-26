@@ -5,6 +5,7 @@
   "description": "a fluentui library base on vue3 + TS",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
     "dev": "pnpm -C playground dev",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 --cache",
     "lint:fix": "pnpm run lint --fix"
@@ -21,6 +22,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.1",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@types/node": "^18.11.18",
     "@vue/runtime-core": "^3.2.45",
     "@vue/shared": "^3.2.45",
@@ -38,7 +41,8 @@
     "vue": "^3.2.45"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx --no-install commitlint --edit"
   },
   "lint-staged": {
     "*.{js,ts,tsx,vue}": [
